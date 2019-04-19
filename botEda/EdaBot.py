@@ -409,23 +409,44 @@ def handle_updates(updates):
                 return send_message('OPS.... algum argumento foi passado errado,tente novamente', chat)
             # print("passa")
         elif command == '/SS':
-            send_message('Criado por Donald Shell em 1959, o método ShellSort é considerado um refinamento do método Insertion Sort.', chat)
-            send_message('Ao invés de considerar o vetor a ser ordenado como um único segmento, ele divide o vetor em sub-grupos.',chat)
-            send_message('Geralmente divide-se o tamanho do vetor ao meio e guarda o valor em uma variável h os grupos vão sendo ordenados, decrementando o valor de h até que os saltos sejam de elemento em elemento',chat)
-            send_message('O gif a seguir ilustra bem o ShellSort',chat)
-            vector =fill_vector_disorder(int(msg))
+            send_message(
+                'Criado por Donald Shell em 1959, o método ShellSort é considerado um refinamento do método Insertion Sort.', chat)
+            send_message(
+                'Ao invés de considerar o vetor a ser ordenado como um único segmento, ele divide o vetor em sub-grupos.', chat)
+            send_message('Geralmente divide-se o tamanho do vetor ao meio e guarda o valor em uma variável h os grupos vão sendo ordenados, decrementando o valor de h até que os saltos sejam de elemento em elemento', chat)
+            send_message('O gif a seguir ilustra bem o ShellSort', chat)
+            vector = fill_vector_disorder(int(msg))
             before = time.time()
             shell_sort(vector)
             after = time.time()
             total = (after - before) * 1000
-            return send_message("O tempo gasto para ordenar o vetor foi: {:6f} mili-segundos". format(total),chat)
-            
+            return send_message("O tempo gasto para ordenar o vetor foi: {:6f} mili-segundos". format(total), chat)
+
         elif command == '/QS':
-            return 'quick sort'
+            send_message(
+                'O QuickSort é um algoritmo que aplica o conceito de dividir e conquistar.', chat)
+            send_message(
+                'Para particionar um vetor, escolhe-se um elemento pivô e move-se todos os valores menores para a esquerda e os maiores para a direita', chat)
+            send_message(
+                'Ordena-se recursivamente os valores menores e os maiores,O gif a seguir ilustra bem o QuickSort', chat)
+            vector = fill_vector_disorder(int(msg))
+            before = time.time()
+            quicksort(vector)
+            after = time.time()
+            total = (after - before) * 1000
+            return send_message("O tempo gasto para ordenar o vetor foi: {:6f} mili-segundos". format(total), chat)
         elif command == '/BS':
-            return 'Bucket Sort'
-        elif command == '/IS':
-            return 'insertion Sort'
+            send_message(
+                'O BucketSort é um algoritmo que aplica o conceito de dividir e conquistar.', chat)
+            send_message('Vamos particionar o vetor em um número finitos de baldes. Cada balde é ordenado individualmente, por diferentes algoritmos ou usando o bucket sort recursivamente', chat)
+            send_message('imagem buccketSort', chat)
+            send_message('É eficiente em dados cujos valores são limitados. Na nossa implementação cada balde foi ordenado usando o método insertion sort. Relembre através desse gif:', chat)
+            vector = fill_vector_disorder(int(msg))
+            before = time.time()
+            bucket_sort(vector)
+            after = time.time()
+            total = (after - before) * 1000
+            return send_message("O tempo gasto para ordenar o vetor foi: {:6f} mili-segundos". format(total), chat)
 
 
 def main():
