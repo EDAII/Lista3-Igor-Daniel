@@ -77,81 +77,81 @@ def quicksort(seq):
     return quicksort(lo) + [pi] + quicksort(hi)
 
 
-print('---------------------------------------------------------------------------------------------------------------')
-print('Criado por Donald Shell em 1959, o método ShellSort é considerado um refinamento do método Insertion Sort.')
-print('Ao invés de considerar o vetor a ser ordenado como um único segmento, ele divide o vetor em sub-grupos.')
-print('Geralmente divide-se o tamanho do vetor ao meio e guarda o valor em uma variável h,'
-      ' os grupos vão sendo ordenados, decrementando o valor de h até que os saltos sejam de elemento em elemento')
+# print('---------------------------------------------------------------------------------------------------------------')
+# print('Criado por Donald Shell em 1959, o método ShellSort é considerado um refinamento do método Insertion Sort.')
+# print('Ao invés de considerar o vetor a ser ordenado como um único segmento, ele divide o vetor em sub-grupos.')
+# print('Geralmente divide-se o tamanho do vetor ao meio e guarda o valor em uma variável h,'
+#       ' os grupos vão sendo ordenados, decrementando o valor de h até que os saltos sejam de elemento em elemento')
 
 
-print('O gif a seguir ilustra bem o ShellSort')
-
-
-
-print('Agora vamos calcular o tempo que o algoritmo demora para ordenar um vetor.')
-total_number = int(input('Digite a quantidade de elementos do vetor: '))
-
-v = fill_vector_disorder(total_number)
-
-before = time.time()
-shel = shell_sort(v)
-after = time.time()
-total = (after - before) * 1000  # Segundos multiplicados em 10000
-print("O tempo gasto para ordenar o vetor foi: {:6f} mili-segundos". format(total))
-
-print('---------------------------------------------------------------------------------------------------------------')
-
-
-print('O QuickSort é um algoritmo que aplica o conceito de dividir e conquistar.')
-print('Para particionar um vetor, escolhe-se um elemento pivô e move-se todos os valores menores para a esquerda e os'
-      'maiores para a direita')
-print('Ordena-se recursivamente os valores menores e os maiores')
+# print('O gif a seguir ilustra bem o ShellSort')
 
 
 
-print('O gif a seguir ilustra bem o QuickSort')
+# print('Agora vamos calcular o tempo que o algoritmo demora para ordenar um vetor.')
+# total_number = int(input('Digite a quantidade de elementos do vetor: '))
+
+# v = fill_vector_disorder(total_number)
+
+# before = time.time()
+# shel = shell_sort(v)
+# after = time.time()
+# total = (after - before) * 1000  # Segundos multiplicados em 10000
+# print("O tempo gasto para ordenar o vetor foi: {:6f} mili-segundos". format(total))
+
+# print('---------------------------------------------------------------------------------------------------------------')
+
+
+# print('O QuickSort é um algoritmo que aplica o conceito de dividir e conquistar.')
+# print('Para particionar um vetor, escolhe-se um elemento pivô e move-se todos os valores menores para a esquerda e os'
+#       'maiores para a direita')
+# print('Ordena-se recursivamente os valores menores e os maiores')
 
 
 
-print('Agora vamos calcular o tempo que o algoritmo demora para ordenar um vetor.')
-total_number = int(input('Digite a quantidade de elementos do vetor: '))
-v = fill_vector_disorder(total_number)
-
-b = time.time()
-quick = quicksort(v)
-a = time.time()
-t = (a - b) * 1000  # Segundos multiplicados em 10000
-print("O tempo gasto foi: {:6f} mili-segundos". format(t))
-
-print('---------------------------------------------------------------------------------------------------------------')
-print('O BucketSort é um algoritmo que aplica o conceito de dividir e conquistar.')
-print('Vamos particionar o vetor em um número finitos de baldes. Cada balde é ordenado individualmente, por diferentes'
-      'algoritmos ou usando o bucket sort recursivamente.')
+# print('O gif a seguir ilustra bem o QuickSort')
 
 
 
-print('IMAGEM BUCKET SORT')
+# print('Agora vamos calcular o tempo que o algoritmo demora para ordenar um vetor.')
+# total_number = int(input('Digite a quantidade de elementos do vetor: '))
+# v = fill_vector_disorder(total_number)
+
+# b = time.time()
+# quick = quicksort(v)
+# a = time.time()
+# t = (a - b) * 1000  # Segundos multiplicados em 10000
+# print("O tempo gasto foi: {:6f} mili-segundos". format(t))
+
+# print('---------------------------------------------------------------------------------------------------------------')
+# print('O BucketSort é um algoritmo que aplica o conceito de dividir e conquistar.')
+# print('Vamos particionar o vetor em um número finitos de baldes. Cada balde é ordenado individualmente, por diferentes'
+#       'algoritmos ou usando o bucket sort recursivamente.')
 
 
 
-print('[É eficiente em dados cujos valores são limitados. Na nossa implementação cada balde foi ordenado usando o método'
-      'insertion sort. Relembre através desse gif:')
+# print('IMAGEM BUCKET SORT')
 
 
 
-print('GIF INSERTION SORT')
+# print('[É eficiente em dados cujos valores são limitados. Na nossa implementação cada balde foi ordenado usando o método'
+#       'insertion sort. Relembre através desse gif:')
+
+
+
+# print('GIF INSERTION SORT')
 
 
 
 
-print('Agora vamos calcular o tempo que o algoritmo demora para ordenar um vetor.')
-total_number = int(input('Digite a quantidade de elementos do vetor: '))
+# print('Agora vamos calcular o tempo que o algoritmo demora para ordenar um vetor.')
+# total_number = int(input('Digite a quantidade de elementos do vetor: '))
 
-v = fill_vector_disorder(total_number)
-bef = time.time()
-bucket = bucket_sort(v)
-aft = time.time()
-tot = (aft - bef) * 1000  # Segundos multiplicados em 10000
-print("O tempo gasto foi: {:6f} mili-segundos". format(tot))
-print('---------------------------------------------------------------------------------------------------------------')
+# v = fill_vector_disorder(total_number)
+# bef = time.time()
+# bucket = bucket_sort(v)
+# aft = time.time()
+# tot = (aft - bef) * 1000  # Segundos multiplicados em 10000
+# print("O tempo gasto foi: {:6f} mili-segundos". format(tot))
+# print('---------------------------------------------------------------------------------------------------------------')
 

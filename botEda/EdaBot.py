@@ -4,6 +4,7 @@ from botConfig import get_url, get_updates, get_json_from_url, get_last_update_i
 from searchMethods import simple_sequence_search, sentry_sequence_search, jump_search, interpolation_search, binary_search
 from searchMethods import fill_vector_order, fill_vector_disorder
 from searchMethods import plotting_graph, compare_graph, search, compare_search
+from sortMethods import*
 import telegram
 import db
 
@@ -78,14 +79,14 @@ def handle_updates(updates):
         print(command)
         msg = ''
         chat = message["chat"]["id"]
-        
+
         if len(message["text"].split(" ", 1)) > 1 and len(message["text"].split(" ")) == 3:
-                try:
-                    msg = message["text"].split(" ", 1)[1].strip()
-                    positions = msg.split(" ")[0].strip()
-                    number = msg.split(" ")[1].strip()
-                except:
-                    return send_message('Somente um argumento foi passado para o calculo da busca', chat)
+            try:
+                msg = message["text"].split(" ", 1)[1].strip()
+                positions = msg.split(" ")[0].strip()
+                number = msg.split(" ")[1].strip()
+            except:
+                return send_message('Somente um argumento foi passado para o calculo da busca', chat)
         elif (len(message["text"].split(" ")) == 2):
             msg = message["text"].split(" ", 1)[1].strip()
             print(msg)
@@ -113,9 +114,9 @@ def handle_updates(updates):
 
             except:
                 send_message('argumentos inválidos', chat)
-
         elif command == '/BPS':
             try:
+
                 search(jump_search, positions, number, 'Busca por Salto', chat)
 
             except:
@@ -407,16 +408,18 @@ def handle_updates(updates):
             except:
                 return send_message('OPS.... algum argumento foi passado errado,tente novamente', chat)
             # print("passa")
-
-        # elif command == '/List':
-            # a = ''
-            # a += '\U0001F4CB Top Buscas\n'
-            # query = db.session.query(Busca).filter_by(chat=chat).order_by(busca.tempoExecucao)
-            # for busca in query.all():
-            #     a += '[[{}]] {} {}\n'.format(busca.id, busca.typeSearch,busca.tempoExecucao)
-            # send_message(a, chat)
         elif command == '/SS':
-            return send_message('Selection sort',chat)
+            send_message('Criado por Donald Shell em 1959, o método ShellSort é considerado um refinamento do método Insertion Sort.', chat)
+            send_message('Ao invés de considerar o vetor a ser ordenado como um único segmento, ele divide o vetor em sub-grupos.',chat)
+            send_message('Geralmente divide-se o tamanho do vetor ao meio e guarda o valor em uma variável h os grupos vão sendo ordenados, decrementando o valor de h até que os saltos sejam de elemento em elemento',chat)
+            send_message('O gif a seguir ilustra bem o ShellSort',chat)
+            vector =fill_vector_disorder(int(msg))
+            before = time.time()
+            shell_sort(vector)
+            after = time.time()
+            total = (after - before) * 1000
+            return send_message("O tempo gasto para ordenar o vetor foi: {:6f} mili-segundos". format(total),chat)
+            
         elif command == '/QS':
             return 'quick sort'
         elif command == '/BS':
