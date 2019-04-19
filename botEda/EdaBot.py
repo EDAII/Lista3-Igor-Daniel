@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import time
-from botConfig import get_url, get_updates, get_json_from_url, get_last_update_id, send_message
+from botConfig import get_url, get_updates, get_json_from_url, get_last_update_id, send_message, sendGif
 from searchMethods import simple_sequence_search, sentry_sequence_search, jump_search, interpolation_search, binary_search
 from searchMethods import fill_vector_order, fill_vector_disorder
 from searchMethods import plotting_graph, compare_graph, search, compare_search
@@ -8,8 +8,11 @@ from sortMethods import*
 import telegram
 import db
 
+
 TOKEN = "644291660:AAE0TNc6nMu4i-eky-5ASn__qJ26kgB63Xg"
 bot = telegram.Bot(TOKEN)
+
+# https://api.telegram.org/bot<{}>/sendVideo?chat_id=<{}>&video={}
 
 
 def identify(list_aux):
@@ -90,6 +93,7 @@ def handle_updates(updates):
         elif (len(message["text"].split(" ")) == 2):
             msg = message["text"].split(" ", 1)[1].strip()
             print(msg)
+
         if command == '/Buscas':
             send_message("*-------> Busca Sequencial Simples(BSS)*\n*-------> Busca Sequencial Com Sentinela(BSCS)*\n*-------> Busca Sequencial Indexada(BSI)*\n*-------> Busca Binária(BB)*\n*-------> Busca Por Salto(BPS)**\n*-------> Busca Por Interpolaçao(BPS)*", chat)
             send_message(
@@ -409,12 +413,14 @@ def handle_updates(updates):
                 return send_message('OPS.... algum argumento foi passado errado,tente novamente', chat)
             # print("passa")
         elif command == '/SS':
+            shell_sort_gif = 'https://media.giphy.com/media/UtQLqAMr6K7052rPxS/giphy.gif'
             send_message(
                 'Criado por Donald Shell em 1959, o método ShellSort é considerado um refinamento do método Insertion Sort.', chat)
             send_message(
                 'Ao invés de considerar o vetor a ser ordenado como um único segmento, ele divide o vetor em sub-grupos.', chat)
             send_message('Geralmente divide-se o tamanho do vetor ao meio e guarda o valor em uma variável h os grupos vão sendo ordenados, decrementando o valor de h até que os saltos sejam de elemento em elemento', chat)
             send_message('O gif a seguir ilustra bem o ShellSort', chat)
+            sendGif(chat, shell_sort_gif)
             vector = fill_vector_disorder(int(msg))
             before = time.time()
             shell_sort(vector)
@@ -423,24 +429,30 @@ def handle_updates(updates):
             return send_message("O tempo gasto para ordenar o vetor foi: {:6f} mili-segundos". format(total), chat)
 
         elif command == '/QS':
+            quick_sort_gif = 'https://media.giphy.com/media/m9R2QuROJ1RkToo6P7/giphy.gif'
             send_message(
                 'O QuickSort é um algoritmo que aplica o conceito de dividir e conquistar.', chat)
             send_message(
                 'Para particionar um vetor, escolhe-se um elemento pivô e move-se todos os valores menores para a esquerda e os maiores para a direita', chat)
             send_message(
                 'Ordena-se recursivamente os valores menores e os maiores,O gif a seguir ilustra bem o QuickSort', chat)
+            sendGif(chat, quick_sort_gif)
             vector = fill_vector_disorder(int(msg))
             before = time.time()
             quicksort(vector)
             after = time.time()
             total = (after - before) * 1000
             return send_message("O tempo gasto para ordenar o vetor foi: {:6f} mili-segundos". format(total), chat)
+        
         elif command == '/BS':
+            insertion_sort_gif = 'https://media.giphy.com/media/lT4aB9tDZU4jkoVXiZ/giphy.gif'
             send_message(
                 'O BucketSort é um algoritmo que aplica o conceito de dividir e conquistar.', chat)
             send_message('Vamos particionar o vetor em um número finitos de baldes. Cada balde é ordenado individualmente, por diferentes algoritmos ou usando o bucket sort recursivamente', chat)
-            send_message('imagem buccketSort', chat)
+            bot.send_photo(chat_id=chat, photo=open(
+                '../bucket.png', 'rb'))
             send_message('É eficiente em dados cujos valores são limitados. Na nossa implementação cada balde foi ordenado usando o método insertion sort. Relembre através desse gif:', chat)
+            sendGif(chat, insertion_sort_gif)
             vector = fill_vector_disorder(int(msg))
             before = time.time()
             bucket_sort(vector)

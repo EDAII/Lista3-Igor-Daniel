@@ -35,3 +35,8 @@ def get_last_update_id(updates):
         update_ids.append(int(update["update_id"]))
 
     return max(update_ids)
+
+def sendGif(chat,url):
+    url = URL+ "sendVideo?chat_id={}&video={}".format(chat,url)
+    print(url)
+    return get_url(url)
